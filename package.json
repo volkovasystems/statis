@@ -1,11 +1,11 @@
 {
   "name": "statis",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Chain static attachment.",
   "main": "statis.js",
   "scripts": {
     "build:static": "babel static.module.js --out-file static.js --source-maps",
-	"build:statis": "babel statis.js --out-file statis.support.js --source-maps",
+    "build:statis": "babel statis.js --out-file statis.support.js --source-maps",
     "build": "npm run build:static && npm run build:statis && webpack --progress --display-modules",
     "test": "mocha statis-test.js"
   },
@@ -20,6 +20,9 @@
     "statis"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/statis/issues"
@@ -33,7 +36,7 @@
     "harden": "^0.21.0",
     "protype": "^0.21.0",
     "raze": "^0.24.0",
-    "stagn": "^0.1.0"
+    "stagn": "^0.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
