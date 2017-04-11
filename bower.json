@@ -1,6 +1,6 @@
 {
   "name": "statis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Chain static attachment.",
   "main": "statis.deploy.js",
   "support": "statis.support.js",
@@ -23,13 +23,29 @@
     "test",
     "tests"
   ],
+  "resolutions": {
+    "pyck": "^0.22.0",
+    "diatom": "^0.20.0",
+    "clazof": "^0.21.0",
+    "budge": "^0.21.0",
+    "wauker": "^0.8.0",
+    "depher": "^0.26.0",
+    "komento": "^0.22.0",
+    "dephall": "^0.24.0",
+    "een": "^0.16.0",
+    "llamalize": "^0.13.0",
+    "titlelize": "^0.14.0",
+    "disdo": "^0.13.0",
+    "transpher": "^0.17.0"
+  },
   "dependencies": {
     "arkount": "^0.5.0",
-    "diatom": "^0.18.0",
+    "diatom": "^0.20.0",
     "falzy": "^0.17.0",
     "harden": "^0.21.0",
     "protype": "^0.21.0",
     "raze": "^0.25.0",
-    "stagn": "^0.3.0"
+    "stagn": "^0.3.0",
+    "vound": "^0.17.0"
   }
 }

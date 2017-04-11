@@ -7,6 +7,7 @@ harden \
 protype \
 raze \
 stagn \
+vound \
 --save && \
 yarn add \
 babel-cli \
@@ -24,5 +25,6 @@ harden \
 protype \
 raze \
 stagn \
+vound \
 --save \
 --force-latest

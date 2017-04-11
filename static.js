@@ -58,10 +58,11 @@
               			"harden": "harden",
               			"protype": "protype",
               			"raze": "raze",
-              			"stagn": "stagn"
+              			"stagn": "stagn",
+              			"vound": "vound"
               		}
               	@end-include
-              */
+              */var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var arkount = require("arkount");
 var diatom = require("diatom");
@@ -70,8 +71,11 @@ var harden = require("harden");
 var protype = require("protype");
 var raze = require("raze");
 var stagn = require("stagn");
+var vound = require("vound");
 
 var Static = diatom("Static");
+
+var BLUEPRINT = (0, _symbol2.default)("blueprint");
 
 Static.prototype.initialize = function initialize(blueprint) {
 	/*;
@@ -86,11 +90,16 @@ Static.prototype.initialize = function initialize(blueprint) {
 		throw new Error("invalid blueprint");
 	}
 
-	this.blueprint = blueprint;
+	this[BLUEPRINT] = blueprint;
 
 	return this;
 };
 
+/*;
+   	@method-documentation:
+   		This will be used for multiple attachment of static properties.
+   	@end-method-documentation
+   */
 Static.prototype.bind = function bind(set) {
 	/*;
                                             	@meta-configuration:
@@ -108,11 +117,16 @@ Static.prototype.bind = function bind(set) {
 		throw new Error("invalid set");
 	}
 
-	stagn.apply(null, [this.blueprint].concat(raze(arguments)));
+	stagn.apply(null, [this[BLUEPRINT]].concat(raze(arguments)));
 
 	return this;
 };
 
+/*;
+   	@method-documentation:
+   		This will be used to attach single static property.
+   	@end-method-documentation
+   */
 Static.prototype.attach = function attach(property, value) {
 	/*;
                                                             	@meta-configuration:
@@ -131,13 +145,46 @@ Static.prototype.attach = function attach(property, value) {
 		throw new Error("invalid property");
 	}
 
-	harden(property, value, this.blueprint);
+	harden(property, value, this[BLUEPRINT]);
 
 	return this;
 };
 
+/*;
+   	@method-documentation:
+   		Attach static method to the blueprint with binding.
+   	@end-method-documentation
+   */
+Static.prototype.implement = function implement(name, method) {
+	/*;
+                                                               	@meta-configuration:
+                                                               		{
+                                                               			"name:required": "string"
+                                                               			"method:required": "function"
+                                                               		}
+                                                               	@end-meta-configuration
+                                                               */
+
+	if (falzy(name) || !protype(name, STRING)) {
+		throw new Error("invalid method name");
+	}
+
+	if (falzy(method) || !protype(method, FUNCTION)) {
+		throw new Error("invalid method");
+	}
+
+	harden(name, vound(method, this[BLUEPRINT]), this[BLUEPRINT]);
+
+	return this;
+};
+
+/*;
+   	@method-documentation:
+   		Retrieve the blueprint from the static context.
+   	@end-method-documentation
+   */
 Static.prototype.eject = function eject() {
-	return this.blueprint;
+	return this[BLUEPRINT];
 };
 
 module.exports = Static;
