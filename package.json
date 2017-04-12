@@ -1,6 +1,6 @@
 {
   "name": "statis",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Chain static attachment.",
   "main": "statis.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "harden": "^0.21.0",
     "protype": "^0.21.0",
     "raze": "^0.25.0",
-    "stagn": "^0.3.0",
+    "stagn": "^0.4.0",
     "vound": "^0.17.0"
   },
   "devDependencies": {
