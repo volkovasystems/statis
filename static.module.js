@@ -48,6 +48,8 @@
 
 	@submodule-documentation:
 		Static wrapper for class.
+
+		This will implement necessary methods to facilitate static specification.
 	@end-submodule-documentation
 
 	@include:
@@ -91,6 +93,14 @@ Static.prototype.initialize = function initialize( blueprint ){
 	}
 
 	this[ BLUEPRINT ] = blueprint;
+
+	this.implement( "stasis", function stasis( ){
+		return Static( this );
+	} );
+
+	this.insert( "stasis", function stasis( ){
+		return Static( blueprint );
+	} );
 
 	return this;
 };
@@ -174,6 +184,34 @@ Static.prototype.implement = function implement( name, method ){
 	}
 
 	harden( name, vound( method, this[ BLUEPRINT ] ), this[ BLUEPRINT ] );
+
+	return this;
+};
+
+/*;
+	@method-documentation:
+		Insert prototype method.
+	@end-method-documentation
+*/
+Static.prototype.insert = function insert( name, method ){
+	/*;
+		@meta-configuration:
+			{
+				"name:required": "string"
+				"method:required": "function"
+			}
+		@end-meta-configuration
+	*/
+
+	if( falzy( name ) || !protype( name, STRING ) ){
+		throw new Error( "invalid method name" );
+	}
+
+	if( falzy( method ) || !protype( method, FUNCTION ) ){
+		throw new Error( "invalid method" );
+	}
+
+	this[ BLUEPRINT ].prototype[ name ] = method;
 
 	return this;
 };
