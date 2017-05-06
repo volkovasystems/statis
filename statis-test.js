@@ -1,17 +1,27 @@
 
+const assert = require( "assert" );
 const diatom = require( "diatom" );
 const statis = require( "./statis.js" );
 
-var Test = statis( diatom( "Test" ) )
+let Test = statis( diatom( "Test" ) )
 	.attach( "hello", "world" )
 	.attach( 123, "yeah" )
 	.bind( {
 		"test": "test123"
 	} )
 	.implement( "testing", function testing( ){
-		console.log( this );
+		return "test value";
 	} )
 	.eject( );
-console.log( require( "util" ).inspect( Test, { "showHidden": true } ) );
 
-console.log( Test.testing( ) );
+assert.equal( Test.hello, "world", "should have value 'world'" );
+
+assert.equal( Test[ 123 ], "yeah", "should have value 'yeah'" );
+
+assert.equal( Test.test, "test123", "should have value 'test123'" );
+
+assert.equal( typeof Test.testing == "function", true, "should be true" );
+
+assert.equal( Test.testing( ), "test value", "should have value 'test value'" );
+
+console.log( "ok" );

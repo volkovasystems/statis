@@ -1,6 +1,6 @@
 yarn add \
 babel-runtime \
-arkount \
+arid \
 diatom \
 falzy \
 harden \
@@ -18,7 +18,7 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
-arkount \
+arid \
 diatom \
 falzy \
 harden \

@@ -54,7 +54,7 @@
 
 	@include:
 		{
-			"arkount": "arkount",
+			"arid": "arid",
 			"diatom": "diatom",
 			"falzy": "falzy",
 			"harden": "harden",
@@ -66,7 +66,7 @@
 	@end-include
 */
 
-const arkount = require( "arkount" );
+const arid = require( "arid" );
 const diatom = require( "diatom" );
 const falzy = require( "falzy" );
 const harden = require( "harden" );
@@ -123,7 +123,11 @@ Static.prototype.bind = function bind( set ){
 		@end-meta-configuration
 	*/
 
-	if( arkount( arguments ) == 0 ){
+	if( falzy( this[ BLUEPRINT ] ) ){
+		throw new Error( "cannot bind, blueprint empty" );
+	}
+
+	if( arid( arguments ) ){
 		throw new Error( "invalid set" );
 	}
 
@@ -151,6 +155,10 @@ Static.prototype.attach = function attach( property, value ){
 		@end-meta-configuration
 	*/
 
+	if( falzy( this[ BLUEPRINT ] ) ){
+		throw new Error( "cannot attach property, blueprint empty" );
+	}
+
 	if( falzy( property ) || !protype( property, NUMBER + STRING + SYMBOL ) ){
 		throw new Error( "invalid property" );
 	}
@@ -174,6 +182,10 @@ Static.prototype.implement = function implement( name, method ){
 			}
 		@end-meta-configuration
 	*/
+
+	if( falzy( this[ BLUEPRINT ] ) ){
+		throw new Error( "cannot implement method, blueprint empty" );
+	}
 
 	if( falzy( name ) || !protype( name, STRING ) ){
 		throw new Error( "invalid method name" );
@@ -203,6 +215,10 @@ Static.prototype.insert = function insert( name, method ){
 		@end-meta-configuration
 	*/
 
+	if( falzy( this[ BLUEPRINT ] ) ){
+		throw new Error( "cannot insert prototype method, blueprint empty" );
+	}
+
 	if( falzy( name ) || !protype( name, STRING ) ){
 		throw new Error( "invalid method name" );
 	}
@@ -222,7 +238,12 @@ Static.prototype.insert = function insert( name, method ){
 	@end-method-documentation
 */
 Static.prototype.eject = function eject( ){
-	return this[ BLUEPRINT ];
+	try{
+		return this[ BLUEPRINT ];
+
+	}finally{
+		delete this[ BLUEPRINT ];
+	}
 };
 
 module.exports = Static;

@@ -42,7 +42,7 @@
               	@end-module-configuration
               
               	@module-documentation:
-              
+              		Chain static attachment.
               	@end-module-documentation
               
               	@include:
