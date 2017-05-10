@@ -34,6 +34,9 @@
               			"file": "statis.js",
               			"module": "statis",
               			"author": "Richeve S. Bebedor",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+              			],
               			"eMail": "richeve.bebedor@gmail.com",
               			"repository": "https://github.com/volkovasystems/statis.git",
               			"test": "statis-test.js",
