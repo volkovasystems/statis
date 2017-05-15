@@ -1,6 +1,6 @@
 {
   "name": "statis",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Chain static attachment.",
   "main": "statis.deploy.js",
   "support": "statis.support.js",
@@ -30,7 +30,7 @@
     "harden": "^0.21.0",
     "protype": "^0.21.0",
     "raze": "^0.29.0",
-    "stagn": "^0.6.0",
-    "vound": "^0.22.0"
+    "stagn": "^0.7.0",
+    "vound": "^0.24.0"
   }
 }
