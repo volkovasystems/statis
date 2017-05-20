@@ -1,9 +1,8 @@
 
 const assert = require( "assert" );
-const diatom = require( "diatom" );
 const statis = require( "./statis.js" );
 
-let Test = statis( diatom( "Test" ) )
+let Test = statis( function Test( ){ } )
 	.attach( "hello", "world" )
 	.attach( 123, "yeah" )
 	.bind( {
