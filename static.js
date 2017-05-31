@@ -59,6 +59,7 @@
               			"arid": "arid",
               			"diatom": "diatom",
               			"falzy": "falzy",
+              			"ferge": "ferge",
               			"harden": "harden",
               			"protype": "protype",
               			"raze": "raze",
@@ -71,6 +72,7 @@
 var arid = require("arid");
 var diatom = require("diatom");
 var falzy = require("falzy");
+var ferge = require("ferge");
 var harden = require("harden");
 var protype = require("protype");
 var raze = require("raze");
@@ -171,7 +173,7 @@ Static.prototype.implement = function implement(name, method) {
 	/*;
                                                                	@meta-configuration:
                                                                		{
-                                                               			"name:required": "string"
+                                                               			"name:required": "string",
                                                                			"method:required": "function"
                                                                		}
                                                                	@end-meta-configuration
@@ -190,6 +192,32 @@ Static.prototype.implement = function implement(name, method) {
 	}
 
 	harden(name, vound(method, this[BLUEPRINT]), this[BLUEPRINT]);
+
+	return this;
+};
+
+/*;
+   	@method-documentation:
+   		Merge instance methods as static methods but still bounded to the entity.
+   	@end-method-documentation
+   */
+Static.prototype.merge = function merge(entity) {
+	/*;
+                                                 	@meta-configuration:
+                                                 		{
+                                                 			"entity:required": [
+                                                 				"function",
+                                                 				"object"
+                                                 			]
+                                                 		}
+                                                 	@end-meta-configuration
+                                                 */
+
+	if (falzy(entity) || !protype(entity, FUNCTION + OBJECT)) {
+		throw new Error("invalid entity");
+	}
+
+	ferge(entity, this[BLUEPRINT]);
 
 	return this;
 };

@@ -3,6 +3,7 @@ babel-runtime \
 arid \
 diatom \
 falzy \
+ferge \
 harden \
 protype \
 raze \
@@ -21,6 +22,7 @@ bower install \
 arid \
 diatom \
 falzy \
+ferge \
 harden \
 protype \
 raze \
