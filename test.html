@@ -1,8 +1,48 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./statis.deploy.js">
-		</script>
+		<title>statis unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./statis.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "statis unit test", function( assert ) {
+
+				let Test = statis( function Test( ){ } )
+					.attach( "hello", "world" )
+					.attach( 123, "yeah" )
+					.bind( {
+						"test": "test123"
+					} )
+					.implement( "testing", function testing( ){
+						return "test value";
+					} )
+					.merge( [ 1, 2, 3 ] )
+					.eject( );
+
+				assert.equal( Test.hello, "world", "should have value 'world'" );
+
+				assert.equal( Test[ 123 ], "yeah", "should have value 'yeah'" );
+
+				assert.equal( Test.test, "test123", "should have value 'test123'" );
+
+				assert.equal( typeof Test.testing == "function", true, "should be true" );
+
+				assert.equal( Test.testing( ), "test value", "should have value 'test value'" );
+
+				assert.deepEqual( Test.slice( ), [ 1, 2, 3 ], "should be deeply equal" );
+				
+			} );
+		</script>
+	</body>
 </html>
