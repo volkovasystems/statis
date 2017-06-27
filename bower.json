@@ -1,6 +1,6 @@
 {
   "name": "statis",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Chain static attachment.",
   "main": "statis.deploy.js",
   "support": "statis.support.js",
@@ -26,13 +26,13 @@
   ],
   "dependencies": {
     "arid": "^0.26.0",
-    "diatom": "^0.31.0",
+    "diatom": "^0.32.0",
     "falzy": "^0.20.0",
-    "ferge": "^0.3.0",
+    "ferge": "^0.4.0",
     "harden": "^0.22.0",
     "protype": "^0.22.0",
     "raze": "^0.30.0",
-    "stagn": "^0.12.0",
-    "vound": "^0.28.0"
+    "stagn": "^0.13.0",
+    "vound": "^0.29.0"
   }
 }
