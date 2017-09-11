@@ -1,48 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>statis unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:statis</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
-
-		<script type="application/javascript" src="./statis.deploy.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "statis unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				let Test = statis( function Test( ){ } )
-					.attach( "hello", "world" )
-					.attach( 123, "yeah" )
-					.bind( {
-						"test": "test123"
-					} )
-					.implement( "testing", function testing( ){
-						return "test value";
-					} )
-					.merge( [ 1, 2, 3 ] )
-					.eject( );
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				assert.equal( Test.hello, "world", "should have value 'world'" );
-
-				assert.equal( Test[ 123 ], "yeah", "should have value 'yeah'" );
-
-				assert.equal( Test.test, "test123", "should have value 'test123'" );
-
-				assert.equal( typeof Test.testing == "function", true, "should be true" );
-
-				assert.equal( Test.testing( ), "test value", "should have value 'test value'" );
-
-				assert.deepEqual( Test.slice( ), [ 1, 2, 3 ], "should be deeply equal" );
-				
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>
