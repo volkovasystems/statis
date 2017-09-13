@@ -93,7 +93,7 @@ Static.prototype.initialize = function initialize( blueprint ){
 		@end-meta-configuration
 	*/
 
-	if( falzy( blueprint ) || !protype( blueprint, FUNCTION ) ){
+	if( falzy( blueprint ) || typeof blueprint != "function" ){
 		throw new Error( "invalid blueprint" );
 	}
 
@@ -184,11 +184,11 @@ Static.prototype.implement = function implement( name, method ){
 		throw new Error( "cannot implement method, blueprint empty" );
 	}
 
-	if( falzy( name ) || !protype( name, STRING ) ){
+	if( falzy( name ) || typeof name != "string" ){
 		throw new Error( "invalid method name" );
 	}
 
-	if( falzy( method ) || !protype( method, FUNCTION ) ){
+	if( falzy( method ) || typeof method != "function" ){
 		throw new Error( "invalid method" );
 	}
 

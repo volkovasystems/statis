@@ -51,14 +51,12 @@
 
 	@include:
 		{
-			"falzy": "falzy",
-			"protype": "protype"
+			"falzy": "falzy"
 		}
 	@end-include
 */
 
 const falzy = require( "falzy" );
-const protype = require( "protype" );
 
 const Static = require( "./static.js" );
 
@@ -71,7 +69,7 @@ const statis = function statis( blueprint ){
 		@end-meta-configuration
 	*/
 
-	if( falzy( blueprint ) || !protype( blueprint, FUNCTION ) ){
+	if( falzy( blueprint ) || typeof blueprint != "function" ){
 		throw new Error( "invalid blueprint" );
 	}
 
