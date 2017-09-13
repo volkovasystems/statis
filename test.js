@@ -1,7 +1,7 @@
 "use strict";
 
 /*;
-	@module-license:
+	@test-license:
 		The MIT License (MIT)
 		@mit-license
 
@@ -25,55 +25,80 @@
 		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 		SOFTWARE.
-	@end-module-license
+	@end-test-license
 
-	@module-configuration:
+	@test-configuration:
 		{
 			"package": "statis",
-			"path": "statis/statis.js",
-			"file": "statis.js",
-			"module": "statis",
+			"path": "statis/test.module.js",
+			"file": "test.module.js",
+			"module": "test",
 			"author": "Richeve S. Bebedor",
 			"eMail": "richeve.bebedor@gmail.com",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-				"Vinse Vinalon <vinsevinalon@gmail.com>"
-			],
-			"repository": "https://github.com/volkovasystems/statis.git",
-			"test": "statis-test.js",
-			"global": true
+			"repository": "https://github.com/volkovasystems/statis.git"
 		}
-	@end-module-configuration
+	@end-test-configuration
 
-	@module-documentation:
-		Chain static attachment.
-	@end-module-documentation
+	@test-documentation:
+
+	@end-test-documentation
 
 	@include:
 		{
-			"falzy": "falzy"
+			"assert": "should/as-function",
+			"statis": "statis"
 		}
 	@end-include
 */
 
-const falzy = require( "falzy" );
+const assert = require( "should/as-function" );
 
-const Static = require( "./static.js" );
+//: @server:
+const statis = require( "./statis.js" );
+//: @end-server
 
-const statis = function statis( blueprint ){
-	/*;
-		@meta-configuration:
-			{
-				"blueprint:required": "function"
-			}
-		@end-meta-configuration
-	*/
 
-	if( falzy( blueprint ) || typeof blueprint != "function" ){
-		throw new Error( "invalid blueprint" );
-	}
 
-	return Static( blueprint );
-};
 
-module.exports = statis;
+
+
+//: @server:
+describe( "statis", ( ) => {
+
+	describe( "`statis with blueprint`", ( ) => {
+		it( "should chain static attachment", ( ) => {
+			let Test = statis( function Test( ){ } )
+			.attach( "hello", "world" )
+			.attach( 123, "yeah" )
+			.bind( {
+				"test": "test123"
+			} )
+			.implement( "testing", function testing( ){
+				return "test value";
+			} )
+			.merge( [ 1, 2, 3 ] )
+			.eject( );
+
+
+			assert.equal( Test.hello, "world" );
+
+			assert.equal( Test[ 123 ], "yeah" );
+
+			assert.equal( Test.test, "test123" );
+
+			assert.equal( typeof Test.testing, "function" );
+
+			assert.equal( Test.testing( ), "test value" );
+
+			assert.deepEqual( Test.slice( ), [ 1, 2, 3 ] );
+		} );
+	} );
+
+} );
+//: @end-server
+
+
+
+
+
+

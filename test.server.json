@@ -1,0 +1,32 @@
+{
+	"stats": {
+		"suites": 2,
+		"tests": 1,
+		"passes": 1,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-09-13T09:03:40.401Z",
+		"end": "2017-09-13T09:03:40.501Z",
+		"duration": 100
+	},
+	"tests": [
+		{
+			"title": "should chain static attachment",
+			"fullTitle": "statis `statis with blueprint` should chain static attachment",
+			"duration": 96,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should chain static attachment",
+			"fullTitle": "statis `statis with blueprint` should chain static attachment",
+			"duration": 96,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
+}

@@ -1,0 +1,84 @@
+{
+	"state": {
+		"passed": 1,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-09-13T09:03:43.302Z",
+	"end": "2017-09-13T09:04:20.825Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "statis",
+			"duration": 0,
+			"start": "2017-09-13T09:04:20.323Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "statis",
+			"duration": 317,
+			"start": "2017-09-13T09:04:20.324Z",
+			"end": "2017-09-13T09:04:20.641Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-09-13T09:04:20.325Z",
+					"end": "2017-09-13T09:04:20.326Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "statis",
+					"associatedTest": "should chain static attachment"
+				},
+				{
+					"start": "2017-09-13T09:04:20.640Z",
+					"end": "2017-09-13T09:04:20.640Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "statis",
+					"associatedTest": "should chain static attachment"
+				},
+				{
+					"start": "2017-09-13T09:04:20.641Z",
+					"end": "2017-09-13T09:04:20.642Z",
+					"duration": 1,
+					"title": "\"after all\" hook",
+					"associatedSuite": "statis"
+				}
+			]
+		},
+		{
+			"name": "`statis with blueprint`",
+			"duration": 317,
+			"start": "2017-09-13T09:04:20.324Z",
+			"end": "2017-09-13T09:04:20.641Z",
+			"tests": [
+				{
+					"name": "should chain static attachment",
+					"start": "2017-09-13T09:04:20.325Z",
+					"end": "2017-09-13T09:04:20.640Z",
+					"duration": 315,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}
